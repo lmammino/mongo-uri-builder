@@ -1,14 +1,17 @@
 # mongo-uri-builder
-A node.js module to easily create mongodb connection strings using configuration objects
+A node.js module to easily create MongoDB connection strings using configuration objects
 
-[![Build Status](https://travis-ci.org/lmammino/mongo-uri-builder.svg)](https://travis-ci.org/lmammino/mongo-uri-builder) [![npm version](https://badge.fury.io/js/mongo-uri-builder.svg)](http://badge.fury.io/js/mongo-uri-builder)
+[![Build Status](https://travis-ci.org/lmammino/mongo-uri-builder.svg)](https://travis-ci.org/lmammino/mongo-uri-builder) [![npm version](https://badge.fury.io/js/mongo-uri-builder.svg)](http://badge.fury.io/js/mongo-uri-builder) [![coverage](https://coveralls.io/repos/lmammino/mongo-uri-builder/badge.svg?branch=master&service=github)](https://coveralls.io/github/lmammino/mongo-uri-builder?branch=master)
 
 [![NPM](https://nodei.co/npm/mongo-uri-builder.png)](https://nodei.co/npm/mongo-uri-builder/)
 
 
 ## Rationale
 
-Most of the existing mongodb libraries (e.g. the official MongoClient or Mongoose) uses connection strings to connect to your running mongo instances which is very quick and convenient. Anyway sometime you want to have your mongodb connection details organized in a nice javascript object so that you can easily write in a configuration file and override some specific values in different environments (e.g. "development" or "production"). With this module you can easily accomlish this goal and in general you will be able to easily generate a mongodb connection string starting from an organized javascript object that you can manipulate as you wish. 
+Most of the existing \ libraries (e.g. the official MongoClient or Mongoose) uses connection strings to connect to your running mongo instances which most of the times is very quick and convenient.
+Anyway sometime you want to have your MongoDB connection details organized in a nice javascript object so that you can easily serialize it in a configuration file and be able to override some specific values in different environments (e.g. "development" or "production") without having to override the entire connection string. 
+
+With this module you can easily accomplish this goal and in general you will be able to easily generate a MongoDB connection string starting from an organized javascript object that you can manipulate as you wish.
 
 
 ## Quick example
@@ -49,7 +52,7 @@ npm install --save mongo-uri-builder
 
 ## Usage
 
-As shown in the previous example the module exposes just a function that accepts an optional structured object as parameter. If no parameter is given the default `mongodb://localhost` will be built.
+As shown in the previous example the module exposes just a function that accepts an optional structured object as parameter. If no parameter is given the default `MongoDB://localhost` will be built.
 
 ### Available options:
 

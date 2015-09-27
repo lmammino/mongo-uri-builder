@@ -7,7 +7,8 @@
     "test": "npm run check-style && npm run tests",
     "check-style": "node_modules/.bin/xo index.js tests/**/*.js",
     "tests": "node_modules/.bin/tape tests/**/*.js",
-    "coverage": "node_modules/.bin/covert -q --json tests/*.js"
+    "coverage": "node_modules/.bin/covert -q --json tests/*.js",
+    "submit-coverage": "node_modules/.bin/istanbul cover node_modules/argg/ --report lcovonly tests/*.js | cat ./coverage/lcov.info | node_modules/.bin/coveralls"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,9 @@
   },
   "homepage": "https://github.com/lmammino/mongo-uri-builder#readme",
   "devDependencies": {
-    "covert": "^1.1.0",
+    "argg": "0.0.2",
+    "coveralls": "^2.11.4",
+    "istanbul": "^0.3.21",
     "tape": "^4.2.0",
     "xo": "^0.9.0"
   }

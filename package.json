@@ -4,9 +4,9 @@
   "description": "A module to easily create mongodb connection strings using configuration objects",
   "main": "index.js",
   "scripts": {
-    "test": "npm run xo && npm run tape",
-    "xo": "node_modules/.bin/xo index.js tests/**/*.js",
-    "tape": "node_modules/.bin/tape tests/**/*.js",
+    "test": "npm run check-style && npm run tests",
+    "check-style": "node_modules/.bin/xo index.js tests/**/*.js",
+    "tests": "node_modules/.bin/tape tests/**/*.js",
     "coverage": "node_modules/.bin/covert -q --json tests/*.js"
   },
   "repository": {

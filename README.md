@@ -8,7 +8,7 @@ A node.js module to easily create MongoDB connection strings using configuration
 
 ## Rationale
 
-Most of the existing \ libraries (e.g. the official MongoClient or Mongoose) uses connection strings to connect to your running mongo instances which most of the times is very quick and convenient.
+Most of the existing MongoDB libraries (e.g. the official MongoClient or Mongoose) uses connection strings to connect to your running mongo instances which most of the times is very quick and convenient.
 Anyway sometime you want to have your MongoDB connection details organized in a nice javascript object so that you can easily serialize it in a configuration file and be able to override some specific values in different environments (e.g. "development" or "production") without having to override the entire connection string. 
 
 With this module you can easily accomplish this goal and in general you will be able to easily generate a MongoDB connection string starting from an organized javascript object that you can manipulate as you wish.

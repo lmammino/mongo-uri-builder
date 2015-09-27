@@ -1,0 +1,35 @@
+{
+  "name": "mongo-uri-builder",
+  "version": "1.0.0",
+  "description": "A module to easily create mongodb connection strings using configuration objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run xo && npm run tape",
+    "xo": "node_modules/.bin/xo index.js tests/**/*.js",
+    "tape": "node_modules/.bin/tape tests/**/*.js",
+    "coverage": "node_modules/.bin/covert -q --json tests/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmammino/mongo-uri-builder.git"
+  },
+  "keywords": [
+    "mongodb",
+    "mongo",
+    "database",
+    "connection",
+    "string",
+    "builder"
+  ],
+  "author": "Luciano Mammino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lmammino/mongo-uri-builder/issues"
+  },
+  "homepage": "https://github.com/lmammino/mongo-uri-builder#readme",
+  "devDependencies": {
+    "covert": "^1.1.0",
+    "tape": "^4.2.0",
+    "xo": "^0.9.0"
+  }
+}

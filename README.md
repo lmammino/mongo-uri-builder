@@ -76,7 +76,7 @@ All the options are optional and the following example describes all the availab
 }
 ```
 
-##Contributing
+## Contributing
 
 Everyone is very welcome to contribute to this project. You can contribute just by submitting bugs or suggesting improvements by [opening an issue on GitHub](https://github.com/lmammino/mongo-uri-builder/issues).
 

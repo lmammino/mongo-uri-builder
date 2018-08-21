@@ -1,40 +1,38 @@
 'use strict';
 
-var extend = require('util')._extend;
-
-module.exports = function (options) {
-	var defaults = {
+module.exports = function (config) {
+	const defaults = {
 		host: 'localhost'
 	};
 
-	options = extend(defaults, options);
+	config = Object.assign({}, defaults, config);
 
-	// schema
-	var uri = 'mongodb://';
+	// Schema
+	let uri = 'mongodb://';
 
-	if (options.username) {
-		uri += options.username;
+	if (config.username) {
+		uri += config.username;
 	}
-	
-	if (options.password) {
-		uri += ':' + options.password ;
+
+	if (config.password) {
+		uri += ':' + config.password;
 	}
-	
-	if (options.username) {
+
+	if (config.username) {
 		uri += '@';
 	}
-	
-	// host
-	uri += options.host;
 
-	// port
-	if (options.port) {
-		uri += ':' + options.port;
+	// Host
+	uri += config.host;
+
+	// Port
+	if (config.port) {
+		uri += ':' + config.port;
 	}
 
-	// replicas
-	if (options.replicas) {
-		options.replicas.forEach(function (replica) {
+	// Replicas
+	if (config.replicas) {
+		config.replicas.forEach(replica => {
 			uri += ',' + replica.host;
 			if (replica.port) {
 				uri += ':' + replica.port;
@@ -42,22 +40,22 @@ module.exports = function (options) {
 		});
 	}
 
-	// database & options
-	if (options.database || options.options) {
+	// Database & options
+	if (config.database || config.options) {
 		uri += '/';
 	}
 
-	if (options.database) {
-		uri += options.database;
+	if (config.database) {
+		uri += config.database;
 	}
 
-	if (options.options) {
-		var pairs = [];
+	if (config.options) {
+		const pairs = [];
 
-		for (var prop in options.options) {
-			if (options.options.hasOwnProperty(prop)) {
-				var k = encodeURIComponent(prop);
-				var v = encodeURIComponent(options.options[prop]);
+		for (const prop in config.options) {
+			if (Object.prototype.hasOwnProperty.call(config.options, prop)) {
+				const k = encodeURIComponent(prop);
+				const v = encodeURIComponent(config.options[prop]);
 				pairs.push(k + '=' + v);
 			}
 		}

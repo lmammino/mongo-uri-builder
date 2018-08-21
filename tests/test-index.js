@@ -42,6 +42,21 @@ test('Build with username and password', t => {
 	t.end();
 });
 
+test('Build with kerberos style (username only)', t => {
+	const expected = 'mongodb://principal@server/?authMechanism=GSSAPI&gssapiServiceName=mongodb';
+
+	t.equal(mongoUriBuilder({
+		username: 'principal',
+		host: 'server',
+		options: {
+			authMechanism: 'GSSAPI',
+			gssapiServiceName: 'mongodb'
+		}
+	}), expected);
+
+	t.end();
+});
+
 test('Build with replica sets', t => {
 	const expected = 'mongodb://localhost,domain1,domain2,domainWithPort:3333';
 

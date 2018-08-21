@@ -1,6 +1,6 @@
 {
   "name": "mongo-uri-builder",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "A module to easily create mongodb connection strings using configuration objects",
   "main": "index.js",
   "scripts": {
@@ -30,9 +30,9 @@
   "homepage": "https://github.com/lmammino/mongo-uri-builder#readme",
   "devDependencies": {
     "argg": "0.0.2",
-    "coveralls": "^2.11.4",
-    "istanbul": "^0.3.21",
+    "coveralls": "^3.0.2",
+    "istanbul": "^0.4.5",
     "tape": "^4.2.0",
-    "xo": "^0.9.0"
+    "xo": "^0.22.0"
   }
 }

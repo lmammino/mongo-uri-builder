@@ -2,18 +2,18 @@
 
 // mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
 
-var test = require('tape');
-var mongoUriBuilder = require('../');
+const test = require('tape');
+const mongoUriBuilder = require('..');
 
-test('Build with default params', function (t) {
-	var expected = 'mongodb://localhost';
+test('Build with default params', t => {
+	const expected = 'mongodb://localhost';
 
 	t.equal(mongoUriBuilder(), expected);
 	t.end();
 });
 
-test('Build with custom host', function (t) {
-	var expected = 'mongodb://custom';
+test('Build with custom host', t => {
+	const expected = 'mongodb://custom';
 
 	t.equal(mongoUriBuilder({
 		host: 'custom'
@@ -21,8 +21,8 @@ test('Build with custom host', function (t) {
 	t.end();
 });
 
-test('Build with custom port number', function (t) {
-	var expected = 'mongodb://localhost:6666';
+test('Build with custom port number', t => {
+	const expected = 'mongodb://localhost:6666';
 
 	t.equal(mongoUriBuilder({
 		port: 6666
@@ -31,8 +31,8 @@ test('Build with custom port number', function (t) {
 	t.end();
 });
 
-test('Build with username and password', function (t) {
-	var expected = 'mongodb://user:pass@localhost';
+test('Build with username and password', t => {
+	const expected = 'mongodb://user:pass@localhost';
 
 	t.equal(mongoUriBuilder({
 		username: 'user',
@@ -42,8 +42,23 @@ test('Build with username and password', function (t) {
 	t.end();
 });
 
-test('Build with replica sets', function (t) {
-	var expected = 'mongodb://localhost,domain1,domain2,domainWithPort:3333';
+test('Build with kerberos style (username only)', t => {
+	const expected = 'mongodb://principal@server/?authMechanism=GSSAPI&gssapiServiceName=mongodb';
+
+	t.equal(mongoUriBuilder({
+		username: 'principal',
+		host: 'server',
+		options: {
+			authMechanism: 'GSSAPI',
+			gssapiServiceName: 'mongodb'
+		}
+	}), expected);
+
+	t.end();
+});
+
+test('Build with replica sets', t => {
+	const expected = 'mongodb://localhost,domain1,domain2,domainWithPort:3333';
 
 	t.equal(mongoUriBuilder({
 		replicas: [
@@ -56,8 +71,8 @@ test('Build with replica sets', function (t) {
 	t.end();
 });
 
-test('Build with database', function (t) {
-	var expected = 'mongodb://localhost/db';
+test('Build with database', t => {
+	const expected = 'mongodb://localhost/db';
 
 	t.equal(mongoUriBuilder({
 		database: 'db'
@@ -66,8 +81,8 @@ test('Build with database', function (t) {
 	t.end();
 });
 
-test('Build with options', function (t) {
-	var expected = 'mongodb://localhost/?w=0&readPreference=secondary';
+test('Build with options', t => {
+	const expected = 'mongodb://localhost/?w=0&readPreference=secondary';
 
 	t.equal(mongoUriBuilder({
 		options: {
@@ -79,8 +94,8 @@ test('Build with options', function (t) {
 	t.end();
 });
 
-test('Build with everything', function (t) {
-	var expected = 'mongodb://user:pass@host1:1111,host2:2222,host3:3333/db?w=0&readPreference=secondary';
+test('Build with everything', t => {
+	const expected = 'mongodb://user:pass@host1:1111,host2:2222,host3:3333/db?w=0&readPreference=secondary';
 
 	t.equal(mongoUriBuilder({
 		username: 'user',

@@ -11,7 +11,7 @@ module.exports = function (config) {
 	let uri = 'mongodb://';
 
 	if (config.username) {
-		uri += config.username;
+		uri += config.username || config.user;
 	}
 
 	if (config.password) {

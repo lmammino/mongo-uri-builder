@@ -61,6 +61,7 @@ All the options are optional and the following example describes all the availab
 ```javascript
 {
 	username: 'user', // the username
+	// user: 'user', // this is alternative of username
 	password: 'pass', // the password
 	host: 'host1', // the main host (default: "localhost")
 	port: 1111, // the main port

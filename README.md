@@ -1,7 +1,9 @@
 # mongo-uri-builder
 A node.js module to easily create MongoDB connection strings using configuration objects
 
-![Tests](https://github.com/lmammino/mongo-uri-builder/workflows/Tests/badge.svg) [![npm version](https://badge.fury.io/js/mongo-uri-builder.svg)](http://badge.fury.io/js/mongo-uri-builder) [![coverage](https://coveralls.io/repos/lmammino/mongo-uri-builder/badge.svg?branch=master&service=github)](https://coveralls.io/github/lmammino/mongo-uri-builder?branch=master)
+![Tests](https://github.com/lmammino/mongo-uri-builder/workflows/Tests/badge.svg)
+[![npm version](https://badge.fury.io/js/mongo-uri-builder.svg)](http://badge.fury.io/js/mongo-uri-builder)
+[![codecov](https://codecov.io/gh/lmammino/mongo-uri-builder/branch/master/graph/badge.svg)](https://codecov.io/gh/lmammino/mongo-uri-builder)
 
 [![NPM](https://nodei.co/npm/mongo-uri-builder.png)](https://nodei.co/npm/mongo-uri-builder/)
 

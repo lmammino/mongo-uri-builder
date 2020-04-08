@@ -25,6 +25,3 @@ jobs:
     - run: npm run coverage:report
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-  publish:
-    

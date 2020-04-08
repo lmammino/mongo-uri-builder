@@ -1,128 +1,110 @@
-'use strict';
+'use strict'
 
 // mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
 
-const test = require('tape');
-const mongoUriBuilder = require('..');
+const tap = require('tap')
+const mongoUriBuilder = require('..')
 
-test('Build with default params', t => {
-	const expected = 'mongodb://localhost';
+tap.test('Build with default params', async () => {
+  const expected = 'mongodb://localhost'
 
-	t.equal(mongoUriBuilder(), expected);
-	t.end();
-});
+  tap.equal(mongoUriBuilder(), expected)
+})
 
-test('Build with custom host', t => {
-	const expected = 'mongodb://custom';
+tap.test('Build with custom host', async () => {
+  const expected = 'mongodb://custom'
 
-	t.equal(mongoUriBuilder({
-		host: 'custom'
-	}), expected);
-	t.end();
-});
+  tap.equal(mongoUriBuilder({
+    host: 'custom'
+  }), expected)
+})
 
-test('Build with custom port number', t => {
-	const expected = 'mongodb://localhost:6666';
+tap.test('Build with custom port number', async () => {
+  const expected = 'mongodb://localhost:6666'
 
-	t.equal(mongoUriBuilder({
-		port: 6666
-	}), expected);
+  tap.equal(mongoUriBuilder({
+    port: 6666
+  }), expected)
+})
 
-	t.end();
-});
+tap.test('Build with username and password', async () => {
+  const expected = 'mongodb://user:pass@localhost'
 
-test('Build with username and password', t => {
-	const expected = 'mongodb://user:pass@localhost';
+  tap.equal(mongoUriBuilder({
+    username: 'user',
+    password: 'pass'
+  }), expected)
+})
 
-	t.equal(mongoUriBuilder({
-		username: 'user',
-		password: 'pass'
-	}), expected);
+tap.test('Build with user and password', async () => {
+  const expected = 'mongodb://user:pass@localhost'
 
-	t.end();
-});
+  tap.equal(mongoUriBuilder({
+    user: 'user',
+    password: 'pass'
+  }), expected)
+})
 
-test('Build with user and password', t => {
-	const expected = 'mongodb://user:pass@localhost';
+tap.test('Build with kerberos style (username only)', async () => {
+  const expected = 'mongodb://principal@server/?authMechanism=GSSAPI&gssapiServiceName=mongodb'
 
-	t.equal(mongoUriBuilder({
-		user: 'user',
-		password: 'pass'
-	}), expected);
+  tap.equal(mongoUriBuilder({
+    username: 'principal',
+    host: 'server',
+    options: {
+      authMechanism: 'GSSAPI',
+      gssapiServiceName: 'mongodb'
+    }
+  }), expected)
+})
 
-	t.end();
-});
+tap.test('Build with replica sets', async () => {
+  const expected = 'mongodb://localhost,domain1,domain2,domainWithPort:3333'
 
-test('Build with kerberos style (username only)', t => {
-	const expected = 'mongodb://principal@server/?authMechanism=GSSAPI&gssapiServiceName=mongodb';
+  tap.equal(mongoUriBuilder({
+    replicas: [
+      { host: 'domain1' },
+      { host: 'domain2' },
+      { host: 'domainWithPort', port: '3333' }
+    ]
+  }), expected)
+})
 
-	t.equal(mongoUriBuilder({
-		username: 'principal',
-		host: 'server',
-		options: {
-			authMechanism: 'GSSAPI',
-			gssapiServiceName: 'mongodb'
-		}
-	}), expected);
+tap.test('Build with database', async () => {
+  const expected = 'mongodb://localhost/db'
 
-	t.end();
-});
+  tap.equal(mongoUriBuilder({
+    database: 'db'
+  }), expected)
+})
 
-test('Build with replica sets', t => {
-	const expected = 'mongodb://localhost,domain1,domain2,domainWithPort:3333';
+tap.test('Build with options', async () => {
+  const expected = 'mongodb://localhost/?w=0&readPreference=secondary'
 
-	t.equal(mongoUriBuilder({
-		replicas: [
-			{host: 'domain1'},
-			{host: 'domain2'},
-			{host: 'domainWithPort', port: '3333'}
-		]
-	}), expected);
+  tap.equal(mongoUriBuilder({
+    options: {
+      w: 0,
+      readPreference: 'secondary'
+    }
+  }), expected)
+})
 
-	t.end();
-});
+tap.test('Build with everything', async () => {
+  const expected = 'mongodb://user:pass@host1:1111,host2:2222,host3:3333/db?w=0&readPreference=secondary'
 
-test('Build with database', t => {
-	const expected = 'mongodb://localhost/db';
-
-	t.equal(mongoUriBuilder({
-		database: 'db'
-	}), expected);
-
-	t.end();
-});
-
-test('Build with options', t => {
-	const expected = 'mongodb://localhost/?w=0&readPreference=secondary';
-
-	t.equal(mongoUriBuilder({
-		options: {
-			w: 0,
-			readPreference: 'secondary'
-		}
-	}), expected);
-
-	t.end();
-});
-
-test('Build with everything', t => {
-	const expected = 'mongodb://user:pass@host1:1111,host2:2222,host3:3333/db?w=0&readPreference=secondary';
-
-	t.equal(mongoUriBuilder({
-		username: 'user',
-		password: 'pass',
-		host: 'host1',
-		port: 1111,
-		replicas: [
-			{host: 'host2', port: 2222},
-			{host: 'host3', port: 3333}
-		],
-		database: 'db',
-		options: {
-			w: 0,
-			readPreference: 'secondary'
-		}
-	}), expected);
-
-	t.end();
-});
+  tap.equal(mongoUriBuilder({
+    username: 'user',
+    password: 'pass',
+    host: 'host1',
+    port: 1111,
+    replicas: [
+      { host: 'host2', port: 2222 },
+      { host: 'host3', port: 3333 }
+    ],
+    database: 'db',
+    options: {
+      w: 0,
+      readPreference: 'secondary'
+    }
+  }), expected)
+})

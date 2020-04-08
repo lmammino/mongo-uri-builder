@@ -4,12 +4,15 @@
   "description": "A module to easily create mongodb connection strings using configuration objects",
   "main": "index.js",
   "scripts": {
-    "test": "npm run check-style && npm run tests",
-    "check-style": "node_modules/.bin/xo index.js tests/**/*.js",
-    "tests": "node_modules/.bin/tape tests/**/*.js",
-    "coverage": "node_modules/.bin/covert -q --json tests/*.js",
-    "submit-coverage": "node_modules/.bin/istanbul cover node_modules/argg/ --report lcovonly tests/*.js && cat ./coverage/lcov.info | node_modules/.bin/coveralls"
+    "test:unit": "tap tests/",
+    "test:lint": "eslint .",
+    "test": "npm run test:lint && npm run test:unit",
+    "coverage:report": "tap --coverage-report=text-lcov tests/ | covecov"
   },
+  "engines": {
+    "node": ">=8"
+  },
+  "engineStrict": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lmammino/mongo-uri-builder.git"
@@ -29,10 +32,14 @@
   },
   "homepage": "https://github.com/lmammino/mongo-uri-builder#readme",
   "devDependencies": {
-    "argg": "0.0.2",
-    "coveralls": "^3.0.11",
-    "istanbul": "^0.4.5",
-    "tape": "^4.13.2",
-    "xo": "^0.28.3"
-  }
+    "codecov": "^3.6.5",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "tap": "^14.10.7"
+  },
+  "dependencies": {}
 }

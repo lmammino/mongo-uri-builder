@@ -1,7 +1,7 @@
 # mongo-uri-builder
 A node.js module to easily create MongoDB connection strings using configuration objects
 
-[![Build Status](https://travis-ci.org/lmammino/mongo-uri-builder.svg)](https://travis-ci.org/lmammino/mongo-uri-builder) [![npm version](https://badge.fury.io/js/mongo-uri-builder.svg)](http://badge.fury.io/js/mongo-uri-builder) [![coverage](https://coveralls.io/repos/lmammino/mongo-uri-builder/badge.svg?branch=master&service=github)](https://coveralls.io/github/lmammino/mongo-uri-builder?branch=master)
+![Tests](https://github.com/lmammino/mongo-uri-builder/workflows/Tests/badge.svg) [![npm version](https://badge.fury.io/js/mongo-uri-builder.svg)](http://badge.fury.io/js/mongo-uri-builder) [![coverage](https://coveralls.io/repos/lmammino/mongo-uri-builder/badge.svg?branch=master&service=github)](https://coveralls.io/github/lmammino/mongo-uri-builder?branch=master)
 
 [![NPM](https://nodei.co/npm/mongo-uri-builder.png)](https://nodei.co/npm/mongo-uri-builder/)
 
@@ -20,7 +20,7 @@ With this module you can easily accomplish this goal and in general you will be 
 var mongoUriBuilder = require('mongo-uri-builder');
 
 var connectionString = mongoUriBuilder({
-	username: 'user',
+	username: 'user', // or user: 'user'
 	password: 'pass',
 	host: 'host1',
 	port: 1111,

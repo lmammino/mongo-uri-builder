@@ -7,7 +7,10 @@
     "test:unit": "tap --coverage-report=lcov --coverage-report=text --no-browser tests/",
     "test:lint": "eslint .",
     "test": "npm run test:lint && npm run test:unit",
-    "coverage:report": "codecov"
+    "coverage:report": "codecov",
+    "release:npm": "npm publish",
+    "release:github": "git tag -a -m \"v${npm_package_version}\" && git push --tags",
+    "release": "npm run release:npm && npm run release:github"
   },
   "engines": {
     "node": ">=8"

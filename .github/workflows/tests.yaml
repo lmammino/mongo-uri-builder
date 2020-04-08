@@ -34,7 +34,7 @@ jobs:
   Release:
     needs:
       - build
-    name: npm-publish
+    name: release
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -56,5 +56,5 @@ jobs:
       run: |
         git config --global user.name ${GITHUB_ACTOR}
         git config --global user.email ${GITHUB_ACTOR}@github.com
-        npm run release:github
+        npm run release
       if: github.ref == 'refs/heads/master'

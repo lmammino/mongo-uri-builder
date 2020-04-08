@@ -52,6 +52,8 @@ As easy as running:
 npm install --save mongo-uri-builder
 ```
 
+Requires Node.js 8+
+
 
 ## Usage
 

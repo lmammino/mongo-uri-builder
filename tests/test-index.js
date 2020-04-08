@@ -42,6 +42,17 @@ test('Build with username and password', t => {
 	t.end();
 });
 
+test('Build with user and password', t => {
+	const expected = 'mongodb://user:pass@localhost';
+
+	t.equal(mongoUriBuilder({
+		user: 'user',
+		password: 'pass'
+	}), expected);
+
+	t.end();
+});
+
 test('Build with kerberos style (username only)', t => {
 	const expected = 'mongodb://principal@server/?authMechanism=GSSAPI&gssapiServiceName=mongodb';
 

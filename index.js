@@ -10,15 +10,15 @@ module.exports = function (config) {
 	// Schema
 	let uri = 'mongodb://';
 
-	if (config.username) {
-		uri += config.username || config.user;
+	if (config.username || config.user) {
+		uri += (config.username || config.user);
 	}
 
 	if (config.password) {
 		uri += ':' + config.password;
 	}
 
-	if (config.username) {
+	if (config.username || config.user) {
 		uri += '@';
 	}
 

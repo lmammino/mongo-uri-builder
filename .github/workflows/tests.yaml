@@ -34,12 +34,15 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@master
+      if: github.ref == 'refs/heads/master'
     - name: Set up Node.js
       uses: actions/setup-node@master
       with:
         node-version: 12.0.0
+      if: github.ref == 'refs/heads/master'
     - name: Publish if version has been updated
       uses: pascalgn/npm-publish-action@4f4bf159e299f65d21cd1cbd96fc5d53228036df
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      if: github.ref == 'refs/heads/master'

@@ -1,6 +1,6 @@
 {
   "name": "mongo-uri-builder",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A module to easily create mongodb connection strings using configuration objects",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "test": "npm run test:lint && npm run test:unit",
     "coverage:report": "codecov",
     "release:npm": "npm publish",
-    "release:github": "git tag -a -m \"v${npm_package_version}\" && git push --tags",
+    "release:github": "git tag -a -m \"v${npm_package_version}\" v${npm_package_version} && git push --tags",
     "release": "npm run release:npm && npm run release:github"
   },
   "engines": {

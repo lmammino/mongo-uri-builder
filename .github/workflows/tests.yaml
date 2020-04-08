@@ -5,7 +5,7 @@ on:
     branches:
       - "**"
     tags-ignore:
-      - 'v*.*.*'        
+      - 'v*.*.*'
 
 jobs:
   build:
@@ -50,7 +50,11 @@ jobs:
         echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: github.ref == 'refs/heads/master'
     - name: Release
-      run: npm run release
+      run: |
+        git config --global user.name ${GITHUB_ACTOR}
+        git config --global user.email ${GITHUB_ACTOR}@github.com
+        npm run release:github
       if: github.ref == 'refs/heads/master'

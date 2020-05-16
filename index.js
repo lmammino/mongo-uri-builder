@@ -1,6 +1,5 @@
 'use strict'
-
-module.exports = function (config) {
+mongouribuilder =  function (config) {
   const defaults = {
     host: 'localhost'
   }

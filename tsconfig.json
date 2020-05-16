@@ -62,5 +62,5 @@
 
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
-  }, "exclude" : ["tests/**/*" , "node_modules"]
+  }, "exclude" : ["tests/**/*" , "node_modules" ,"test/**/*"]
 }

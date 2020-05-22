@@ -12,7 +12,7 @@ remote=$(git config --get remote.origin.url)
 repo=$(basename $remote .git)
 
 # POST a new ref to repo via Github API
-curl -s -X POST https://api.github.com/repos/$REPO_OWNER/$repo/git/refs \
+curl -s -X POST https://api.github.com/repos/lmammino/$repo/git/refs \
 -H "Authorization: token $GITHUB_TOKEN" \
 -d @- << EOF
 {

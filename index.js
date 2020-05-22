@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = function (config) {
+module.exports = function builder (config) {
   const defaults = {
     host: 'localhost'
   }

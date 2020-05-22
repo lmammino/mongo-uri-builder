@@ -49,7 +49,6 @@ jobs:
         echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
       env:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: github.ref == 'refs/heads/master'
     - name: Release
       run: |
@@ -57,4 +56,6 @@ jobs:
         git config --global user.email ${GITHUB_ACTOR}@github.com
         npm install
         npm run release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       if: github.ref == 'refs/heads/master'

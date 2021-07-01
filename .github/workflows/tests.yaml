@@ -5,30 +5,29 @@ on:
     branches:
       - "**"
     tags-ignore:
-      - 'v*.*.*'
+      - "v*.*.*"
 
 jobs:
   build:
-
     runs-on: ubuntu-18.04
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [12.x, 14.x, 16.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm test
-      env:
-        CI: true
-    - run: npm run coverage:report
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm test
+        env:
+          CI: true
+      - run: npm run coverage:report
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   Release:
     needs:
@@ -36,26 +35,26 @@ jobs:
     name: release
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@master
-      if: github.ref == 'refs/heads/master'
-    - name: Set up Node.js
-      uses: actions/setup-node@master
-      with:
-        node-version: 12.0.0
-      if: github.ref == 'refs/heads/master'
-    - name: Create .npmrc
-      run: |
-        echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
-      env:
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      if: github.ref == 'refs/heads/master'
-    - name: Release
-      run: |
-        git config --global user.name ${GITHUB_ACTOR}
-        git config --global user.email ${GITHUB_ACTOR}@github.com
-        npm install
-        npm run release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      if: github.ref == 'refs/heads/master'
+      - name: Checkout repository
+        uses: actions/checkout@master
+        if: github.ref == 'refs/heads/master'
+      - name: Set up Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: 12.0.0
+        if: github.ref == 'refs/heads/master'
+      - name: Create .npmrc
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        if: github.ref == 'refs/heads/master'
+      - name: Release
+        run: |
+          git config --global user.name ${GITHUB_ACTOR}
+          git config --global user.email ${GITHUB_ACTOR}@github.com
+          npm install
+          npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: github.ref == 'refs/heads/master'

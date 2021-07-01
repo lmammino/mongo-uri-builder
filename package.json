@@ -1,6 +1,6 @@
 {
   "name": "mongo-uri-builder",
-  "version": "3.2.2",
+  "version": "4.0.0",
   "description": "A module to easily create mongodb connection strings using configuration objects",
   "main": "index.js",
   "exports": {
@@ -12,7 +12,8 @@
   },
   "files": [
     "index.js",
-    "index.mjs"
+    "index.mjs",
+    "index.d.ts"
   ],
   "scripts": {
     "test:unit": "tap --coverage-report=lcov --coverage-report=text --no-browser tests/",
@@ -26,7 +27,7 @@
     "release": "npm run release:github && npm run release:npm"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
   },
   "engineStrict": true,
   "repository": {
@@ -48,15 +49,15 @@
   },
   "homepage": "https://github.com/lmammino/mongo-uri-builder#readme",
   "devDependencies": {
-    "codecov": "^3.6.5",
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
+    "codecov": "^3.8.2",
+    "eslint": "^7.29.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "gen-esm-wrapper": "^1.0.6",
-    "tap": "^14.10.7"
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-standard": "^4.1.0",
+    "gen-esm-wrapper": "^1.1.2",
+    "tap": "^15.0.9"
   },
   "dependencies": {}
 }

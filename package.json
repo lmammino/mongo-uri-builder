@@ -16,7 +16,7 @@
     "index.d.ts"
   ],
   "scripts": {
-    "test:unit": "tap --coverage-report=lcov --coverage-report=text --no-browser tests/",
+    "test:unit": "tap --coverage-report=lcov --coverage-report=text --no-browser --no-check-coverage tests/",
     "test:lint": "eslint .",
     "test": "npm run test:lint && npm run test:unit",
     "build": "gen-esm-wrapper . ./index.mjs",

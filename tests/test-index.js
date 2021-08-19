@@ -11,6 +11,9 @@ tap.test('Build with default params', async () => {
   tap.equal(mongoUriBuilder(), expected)
 })
 
+tap.equal(mongoUriBuilder({ srv: true }),
+  'mongodb+srv://localhost', 'Build with srv:true')
+
 tap.test('Build with custom host', async () => {
   const expected = 'mongodb://custom'
 

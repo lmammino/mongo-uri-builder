@@ -10,6 +10,10 @@ module.exports = function builder (config) {
   // Schema
   let uri = 'mongodb://'
 
+  if (config.srv) {
+    uri = 'mongodb+srv://'
+  }
+
   if (config.username || config.user) {
     uri += (config.username || config.user)
   }

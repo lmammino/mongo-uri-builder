@@ -74,6 +74,7 @@ All the options are optional and the following example describes all the availab
 		{host: 'host2', port: 2222}, // every replica must define an host, the port is optional
 		{host: 'host3', port: 3333}
 	],
+  srv: true, // set to true to use "mongodb+srv://" protocol
 	database: 'db', // the name of the database
 	options: { // an arbitrary object of connection options
 		w: 0,
